@@ -7,6 +7,16 @@ class BaseController extends Controller {
 	 *
 	 * @return void
 	 */
+        
+        /**
+        * Construct function.
+        */
+        public function __construct()
+        {
+            //Token filter applied to all post requests.
+            $this->beforeFilter('csrf', array('on' => 'post'));
+        }
+        
 	protected function setupLayout()
 	{
 		if ( ! is_null($this->layout))

@@ -12,9 +12,12 @@
         <link href="{{ URL::asset('css/normalize') }}" type="text/css"/>
     </head>
     <body>
+        @if(Session::get('flash_message'))
+            <div class='flash-message'>{{ Session::get('flash_message') }}</div>
+        @endif
         <div>
             <h2>Register Here</h2>
-            {{ Form::open(array('url' => '/home/register', 'method' => 'POST')) }}
+            {{ Form::open(array('url' => '/auth/register', 'method' => 'POST')) }}
                 {{-- Email address field. -------------------}}
                 {{ Form::label('email', 'Email:') }}
                 {{ Form::text('email') }}
@@ -30,7 +33,7 @@
         <br><br>
         <div>
             <h2>Login</h2>
-            {{ Form::open(array('url' => '/home/login', 'method' => 'POST')) }}
+            {{ Form::open(array('url' => '/auth/login', 'method' => 'POST')) }}
                 {{-- Email address field. -------------------}}
                 {{ Form::label('email', 'Email:') }}
                 {{ Form::text('email') }}

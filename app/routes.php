@@ -15,3 +15,7 @@ Route::get('/', function()
 {
 	return View::make('home');
 });
+
+Route::controller('/auth', 'UserController');
+
+Route::controller('/members', 'MembersController');
