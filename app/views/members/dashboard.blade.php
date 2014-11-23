@@ -12,7 +12,22 @@ Member Dashboard
 <!-- Add Content for Page-->
 @section('content')
     <div>
-        <h2>You have successfully logged in!</h2>
         {{ link_to('auth/logout', 'Logout') }}
+    </div>
+    <div>
+        @if(!empty($parties))
+            <ul>
+                @foreach ($parties as $party)
+                <li>
+                    <a href='{{ $party->first()->website }}'></a>
+                </li>
+                @endforeach 
+            </ul>
+        @else
+            <p>You have no parties.</p>
+        @endif    
+    </div>
+    <div>
+        <a href='/members/add'>Add a Party</a>
     </div>
 @stop

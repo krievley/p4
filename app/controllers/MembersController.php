@@ -18,8 +18,22 @@ class MembersController extends BaseController {
             $this->beforeFilter('auth', array('all'));
         }
         
+        //Display the user's dashboard.
         public function getDashboard() {
-            return View::make('members/dashboard');
+            $id = Auth::id();
+            $parties = User::find($id)->parties;
+            return View::make('members/dashboard')
+                    ->with('parties', $parties);
+        }
+        
+        //Display the form to add a party.
+        public function getAdd() {
+            return View::make('members/add');
+        }
+        
+        //Function to process the form.
+        public function postAdd() {
+            
         }
 }
 
