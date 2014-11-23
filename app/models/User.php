@@ -30,4 +30,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
         public static $rules = array('email' => 'email|unique:users,email',
                                 'password' => 'min:6');
+        
+        /**
+        * The following functions represent the relationships
+        * of the User model to other models
+        *
+        * @var function
+        */
+        public function parties() {
+            return $this->hasMany('Party');
+        }
 }
