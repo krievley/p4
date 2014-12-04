@@ -15,4 +15,11 @@ class Party extends Eloquent {
     public function user() {
         return $this->belongsTo('User');
     }
+    
+    /**
+    * The rules required to validate a new website.
+    *
+    * @var array
+    */
+    public static $rules = array('website' => 'unique:parties,website');
 }

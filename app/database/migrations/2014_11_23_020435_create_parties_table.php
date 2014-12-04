@@ -18,6 +18,8 @@ class CreatePartiesTable extends Migration {
                $table->integer('user_id');
                $table->string('website')->unique();
                $table->string('name');
+               $table->date('date');
+               $table->time('time');
                $table->string('theme');
                $table->text('provided_items'); 
                $table->string('location');

@@ -11,11 +11,17 @@
 |
 */
 
+//Route to home.
 Route::get('/', function()
 {
 	return View::make('home');
 });
 
+//Route for user authentication.
 Route::controller('/auth', 'UserController');
 
+//Route for all registered members.
 Route::controller('/members', 'MembersController');
+
+//Route to display each party using unique URL.
+Route::get('/party/{website}', ['uses' => 'PartyController@getWebsite']);

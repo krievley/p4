@@ -18,6 +18,14 @@ Add a Party
         {{ Form::label('name', 'Name') }}<br>
         {{ Form::text('name') }}
         <br><br>
+        {{-- Date of Party -------------------------------}}
+        {{ Form::label('date', 'Date') }}<br>
+        {{ Form::input('date', 'date') }}
+        <br><br>
+        {{-- Time of Party -------------------------------}}
+        {{ Form::label('time', 'Time') }}<br>
+        {{ Form::input('time', 'time') }}
+        <br><br>
         {{-- Choose Theme --------------------------------}}
         {{ Form::label('theme', 'Theme') }}<br>
         {{ Form::text('theme') }}

@@ -16,13 +16,13 @@ Member Dashboard
     </div>
     <div>
         @if(!empty($parties))
-            <ul>
+            <table>
                 @foreach ($parties as $party)
-                <li>
-                    <a href='{{ $party->first()->website }}'></a>
-                </li>
+                <tr>
+                    <td><a href='{{'/party/' . $party->website }}' target='blank'>{{ $party->name }}</a></td>
+                </tr>
                 @endforeach 
-            </ul>
+            </table>
         @else
             <p>You have no parties.</p>
         @endif    
