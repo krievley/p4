@@ -15,7 +15,7 @@ Add a Party
     {{ Form::open(array('url' => 'members/add', 'method' => 'POST')) }}
     
         {{-- Name of Party -------------------------------}}
-        {{ Form::label('name', 'Name') }}<br>
+        {{ Form::label('name', 'Name of Party') }}<br>
         {{ Form::text('name') }}
         <br><br>
         {{-- Date of Party -------------------------------}}
