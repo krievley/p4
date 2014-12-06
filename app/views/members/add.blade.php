@@ -50,6 +50,19 @@ Add a Party
         <br><br>                                    
         {{-- Submit Form ---------------------------------}}
         {{ Form::submit('Submit') }}
+    {{ Form::close() }}    
 </div>
+<script>
+  $(function() {
+    // Enable Pickadate on an input field
+    $('#date').pickadate();
+  });   
+</script>
+<form>
+  <input id="date" name="date" type="text" placeholder="Choose a date">
+  
+  <input type="submit" value="Submit" class="btn btn-info btn-block">
+</form>
+
 @stop
 

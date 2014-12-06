@@ -25,3 +25,8 @@ Route::controller('/members', 'MembersController');
 
 //Route to display each party using unique URL.
 Route::get('/party/{website}', ['uses' => 'PartyController@getWebsite']);
+
+Route::get('/test', function()
+{
+   return View::make('index'); 
+});
