@@ -13,4 +13,3 @@ do an in-person demo.
 ## Outside Code
 normalize.css: http://necolas.github.io/normalize.css/
 Moment: https://github.com/moment/moment/
-HTML5 Form Elements Package: https://github.com/smalldogs/html5inputs/

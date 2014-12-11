@@ -1,6 +1,5 @@
 <!-- Add a Party Page -->
 
-
 <!-- Use Main Template -->
 @extends('templates.main')
 
@@ -23,8 +22,15 @@ Add a Party
         {{ Form::input('date', 'date') }}
         <br><br>
         {{-- Time of Party -------------------------------}}
-        {{ Form::label('time', 'Time') }}<br>
-        {{ Form::input('time', 'time') }}
+        {{ Form::label('start_time', 'Start Time') }}<br>
+        {{ Form::input('time', 'start_time') }}
+        <br><br>
+        {{ Form::label('end_time', 'End Time') }}<br>
+        {{ Form::input('time', 'end_time') }}
+        <br><br>
+        {{-- Host of Party -------------------------------}}
+        {{ Form::label('host', 'Host') }}<br>
+        {{ Form::text('host') }}
         <br><br>
         {{-- Choose Theme --------------------------------}}
         {{ Form::label('theme', 'Theme') }}<br>
@@ -52,17 +58,5 @@ Add a Party
         {{ Form::submit('Submit') }}
     {{ Form::close() }}    
 </div>
-<script>
-  $(function() {
-    // Enable Pickadate on an input field
-    $('#date').pickadate();
-  });   
-</script>
-<form>
-  <input id="date" name="date" type="text" placeholder="Choose a date">
-  
-  <input type="submit" value="Submit" class="btn btn-info btn-block">
-</form>
-
 @stop
 

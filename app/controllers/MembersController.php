@@ -22,9 +22,11 @@ class MembersController extends BaseController {
         public function getDashboard() {
             $id = Auth::id();
             $parties = User::find($id)->parties;
+            $today = date('dd/mm/yyyy');
             //print_r($parties->first()->website);
             return View::make('members/dashboard')
-                    ->with('parties', $parties);
+                    ->with('parties', $parties)
+                    ->with('today', $today);
         }
         
         //Display the form to add a party.
@@ -32,7 +34,14 @@ class MembersController extends BaseController {
             return View::make('members/add');
         }
         
-        //Function to process the form.
+        //Displays the form to edit a party.
+        public function getEdit($id) {
+            $party = Party::find($id);
+            return View::make('members/edit')
+                    ->with('parties', $party);
+        }
+        
+        //Function to process the add party form.
         public function postAdd() {
             //Add party to the database.
             $party = new Party;
@@ -58,6 +67,15 @@ class MembersController extends BaseController {
             
             return Redirect::to('members/dashboard')
                     ->with('flash_message', 'Your party has been added.');
+        }
+        
+        //Function to delete a party.
+        public function getDelete($id) {
+            //Find party by id and delete it.
+            $party = Party::destroy($id);
+            
+            //Return back to dashboard.
+            return Redirect::back();
         }
 }
 

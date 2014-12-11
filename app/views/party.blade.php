@@ -8,7 +8,7 @@
     </head>
     <body>
         <div>
-            Host: {{ $user->first()->email }}<br>
+            Host: {{ $party->first()->host }}<br>
             Party Name: {{ $party->first()->name }}<br>
             Theme: {{ $party->first()->theme }}<br>
             Location: {{ $party->first()->location }}<br>
