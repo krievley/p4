@@ -34,19 +34,20 @@ class MembersController extends BaseController {
             return View::make('members/add');
         }
         
-        //Displays the form to edit a party.
-        public function getEdit($id) {
-            $party = Party::find($id);
-            return View::make('members/edit')
-                    ->with('parties', $party);
-        }
-        
         //Function to process the add party form.
         public function postAdd() {
+            //Convert date from input.
+            $date = new DateTime();
+            $date->setDate(Input::get('year'), Input::get('month'), Input::get('day'));
+            
             //Add party to the database.
             $party = new Party;
             $party->user_id = Auth::id();
+            $party->host = Input::get('host');
             $party->name = Input::get('name');
+            $party->date = $date;
+            $party->start_time = Input::get('start_hour') . ':' . Input::get('start_minute') . ' ' . Input::get('start_ampm');
+            $party->end_time = Input::get('end_hour') . ':' . Input::get('end_minute') . ' ' . Input::get('end_ampm');
             $party->theme = Input::get('theme');
             $party->provided_items = Input::get('items');
             $party->location = Input::get('location');
@@ -67,6 +68,32 @@ class MembersController extends BaseController {
             
             return Redirect::to('members/dashboard')
                     ->with('flash_message', 'Your party has been added.');
+        }
+        
+        //Displays the form to edit a party.
+        public function getEdit($id) {
+            $party = Party::find($id);
+            return View::make('members/edit')
+                    ->with('party', $party);
+        }
+        
+        //Processes the edit form.
+        public function postEdit() {
+            //Transform user input to date.
+            $date = new DateTime();
+            $date->setDate(Input::get('year'), Input::get('month'), Input::get('day'));
+            //Update database
+            Party::where('id', '=', Input::get('id'))
+                    ->update(array('host' => Input::get('host'),
+                                    'name' => Input::get('name'),
+                                    'date' => $date,
+                                    'start_time' => Input::get('start_hour') . ':' . Input::get('start_minute') . ' ' . Input::get('start_ampm'),
+                                    'end_time' => Input::get('end_hour') . ':' . Input::get('end_minute') . ' ' . Input::get('end_ampm'),
+                                    'theme' => Input::get('theme'),
+                                    'provided_items' => Input::get('provided_items'),
+                                    'location' => Input::get('location'),
+                                    'attire' => Input::get('attire'),
+                                    'alcohol' => Input::get('alcohol')));
         }
         
         //Function to delete a party.

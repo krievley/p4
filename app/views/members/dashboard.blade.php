@@ -28,7 +28,7 @@ Member Dashboard
                 <tr>
                     <td><a href='{{'/party/' . $party->website }}' target='blank'>{{ $party->name }}</a></td>
                     <td>
-                        <a href='/members/delete/{{$party->id}}'>Edit</a>
+                        <a href='/members/edit/{{$party->id}}'>Edit</a>
                         <a href='#'>Invite Guests</a>
                         <a href='/members/delete/{{$party->id}}'>Delete</a>
                     </td>

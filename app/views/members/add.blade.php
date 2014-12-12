@@ -19,14 +19,32 @@ Add a Party
         <br><br>
         {{-- Date of Party -------------------------------}}
         {{ Form::label('date', 'Date') }}<br>
-        {{ Form::input('date', 'date') }}
+        {{ Form::month() }}
+        {{ Form::day() }}
+        {{ Form::year() }}
         <br><br>
         {{-- Time of Party -------------------------------}}
         {{ Form::label('start_time', 'Start Time') }}<br>
-        {{ Form::input('time', 'start_time') }}
+        <select id="start_hour" name="start_hour">
+            {{ Form::hour() }}
+        </select>
+        :
+        <select id="start_minute" name="start_minute">
+            {{ Form::minute() }}
+        </select>
+        {{ Form::select('start_ampm', array('am' => 'am',
+                                            'pm' => 'pm')) }}
         <br><br>
         {{ Form::label('end_time', 'End Time') }}<br>
-        {{ Form::input('time', 'end_time') }}
+        <select id="end_hour" name="end_hour">
+            {{ Form::hour() }}
+        </select>
+        :
+        <select id="end_minute" name="end_minute">
+            {{ Form::minute() }}
+        </select>
+        {{ Form::select('end_ampm', array('am' => 'am',
+                                            'pm' => 'pm')) }}
         <br><br>
         {{-- Host of Party -------------------------------}}
         {{ Form::label('host', 'Host') }}<br>

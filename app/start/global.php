@@ -80,3 +80,71 @@ App::down(function()
 
 require app_path().'/filters.php';
 
+/*
+|--------------------------------------------------------------------------
+| Form Macros
+|--------------------------------------------------------------------------
+|
+| The following macros will be used in several of the views
+| as forms.
+|
+*/
+
+//Month Form
+Form::macro('month', function() 
+{
+   $output = '<select id="month" name="month"><option value="none">Month</option>';
+   for($m=1; $m<=12; $m++) {
+       $output .= '<option value="' . $m . '">' . $m . '</option>';
+   }
+   $output .= '</select>';
+   
+   return $output;
+});
+
+//Day Form
+Form::macro('day', function()
+{
+   $output = '<select id="day" name="day"><option value="none">Day</option>';
+   for($d=1; $d<=31; $d++) {
+       $output .= '<option value="' . $d . '">' . $d . '</option>';
+   }
+   $output .= '</select>';
+   
+   return $output;
+});
+
+//Year Form
+Form::macro('year', function()
+{
+   $currentYear = date('Y');
+   $output = '<select id="year" name="year"><option value="none">Year</option>';
+   for($y=($currentYear); $y<=($currentYear + 10); $y++) {
+       $output .= '<option value="' . $y . '">' . $y . '</option>';
+   }
+   $output .= '</select>';
+   
+   return $output;
+});
+
+//Hour Form
+Form::macro('hour', function()
+{
+   $output = '<option value="none">Hour</option>';
+   for($h=1; $h<=12; $h++) {
+       $output .= '<option value="' . $h . '">' . $h . '</option>';
+   }
+   
+   return $output;
+});
+
+//Minute Form
+Form::macro('minute', function()
+{
+   $output = '<option value="none">Minute</option>';
+   for($m=0; $m<=55; $m+=5) {
+       $output .= '<option value="' . str_pad($m, 2, "0", STR_PAD_LEFT) . '">' . str_pad($m, 2, "0", STR_PAD_LEFT) . '</option>';
+   }
+   
+   return $output;
+});

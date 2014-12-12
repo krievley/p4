@@ -10,6 +10,9 @@
         <div>
             Host: {{ $party->first()->host }}<br>
             Party Name: {{ $party->first()->name }}<br>
+            Date: {{ date('F d, Y', strtotime($party->first()->date)) }}<br>
+            Start Time: {{ $party->first()->start_time }}<br>
+            End Time: {{ $party->first()->end_time }}<br>
             Theme: {{ $party->first()->theme }}<br>
             Location: {{ $party->first()->location }}<br>
             Attire: {{ $party->first()->attire }}<br>
