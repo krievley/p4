@@ -94,6 +94,8 @@ class MembersController extends BaseController {
                                     'location' => Input::get('location'),
                                     'attire' => Input::get('attire'),
                                     'alcohol' => Input::get('alcohol')));
+            
+            return Redirect::back()->with('message', 'Your Changes Have Been Saved');
         }
         
         //Function to delete a party.
@@ -103,6 +105,30 @@ class MembersController extends BaseController {
             
             //Return back to dashboard.
             return Redirect::back();
+        }
+        
+        //Function to get invite page.
+        public function getInvite($id) {
+            $party = Party::find($id);
+            
+            return View::make('members.invite')
+                    ->with('party', $party);
+        }
+        
+        //Function to process the invite request.
+        public function postInvite() {
+            $input = array('input' => Input::all());
+            
+            //Send mail using user input.
+            Mail::send('emails.invite', $input, function($message)
+            {
+                $message->from(Input::get('from'));
+                $message->to(Input::get('to')); 
+            });
+            
+            //Redirect back to user dashboard.
+            return Redirect::to('members/dashboard')
+                ->with('message', 'Your invitations have been sent.');
         }
 }
 

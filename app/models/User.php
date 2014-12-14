@@ -28,8 +28,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
 	 */
-        public static $rules = array('email' => 'email|unique:users,email',
-                                'password' => 'min:6');
+        public static $rules = array('email' => 'required|email|unique:users,email',
+                                'password' => 'required|min:6');
         
         /**
         * The following functions represent the relationships

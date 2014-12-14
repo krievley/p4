@@ -16,6 +16,10 @@ class Party extends Eloquent {
         return $this->belongsTo('User');
     }
     
+    public function guests() {
+        return $this->belongsToMany('Guest');
+    }
+    
     /**
     * The rules required to validate a new website.
     *

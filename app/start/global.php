@@ -91,11 +91,16 @@ require app_path().'/filters.php';
 */
 
 //Month Form
-Form::macro('month', function() 
+Form::macro('month', function($selected = null) 
 {
    $output = '<select id="month" name="month"><option value="none">Month</option>';
    for($m=1; $m<=12; $m++) {
-       $output .= '<option value="' . $m . '">' . $m . '</option>';
+       if ($m == $selected) {
+           $output .= '<option value="' . $m . '" selected >' . $m . '</option>';
+       }
+       else {
+        $output .= '<option value="' . $m . '">' . $m . '</option>';
+       }
    }
    $output .= '</select>';
    
@@ -103,11 +108,16 @@ Form::macro('month', function()
 });
 
 //Day Form
-Form::macro('day', function()
+Form::macro('day', function($selected = null)
 {
    $output = '<select id="day" name="day"><option value="none">Day</option>';
    for($d=1; $d<=31; $d++) {
-       $output .= '<option value="' . $d . '">' . $d . '</option>';
+       if ($d == $selected) {
+           $output .= '<option value="' . $d . '" selected >' . $d . '</option>';
+       }
+       else {
+           $output .= '<option value="' . $d . '">' . $d . '</option>';
+       }
    }
    $output .= '</select>';
    
@@ -115,12 +125,17 @@ Form::macro('day', function()
 });
 
 //Year Form
-Form::macro('year', function()
+Form::macro('year', function($selected = null)
 {
    $currentYear = date('Y');
    $output = '<select id="year" name="year"><option value="none">Year</option>';
    for($y=($currentYear); $y<=($currentYear + 10); $y++) {
-       $output .= '<option value="' . $y . '">' . $y . '</option>';
+       if ($y == $selected) {
+           $output .= '<option value="' . $y . '" selected >' . $y . '</option>';
+       }
+       else {
+           $output .= '<option value="' . $y . '">' . $y . '</option>';
+       }
    }
    $output .= '</select>';
    
@@ -128,22 +143,32 @@ Form::macro('year', function()
 });
 
 //Hour Form
-Form::macro('hour', function()
+Form::macro('hour', function($selected = null)
 {
    $output = '<option value="none">Hour</option>';
    for($h=1; $h<=12; $h++) {
-       $output .= '<option value="' . $h . '">' . $h . '</option>';
+       if ($h == $selected) {
+           $output .= '<option value="' . $h . '" selected >' . $h . '</option>';
+       }
+       else {
+           $output .= '<option value="' . $h . '">' . $h . '</option>';
+       }
    }
    
    return $output;
 });
 
 //Minute Form
-Form::macro('minute', function()
+Form::macro('minute', function($selected = 100)
 {
    $output = '<option value="none">Minute</option>';
    for($m=0; $m<=55; $m+=5) {
-       $output .= '<option value="' . str_pad($m, 2, "0", STR_PAD_LEFT) . '">' . str_pad($m, 2, "0", STR_PAD_LEFT) . '</option>';
+       if ($m == $selected) {
+           $output .= '<option value="' . str_pad($m, 2, "0", STR_PAD_LEFT) . '" selected >' . str_pad($m, 2, "0", STR_PAD_LEFT) . '</option>';
+       }
+       else {
+           $output .= '<option value="' . str_pad($m, 2, "0", STR_PAD_LEFT) . '">' . str_pad($m, 2, "0", STR_PAD_LEFT) . '</option>';
+       }
    }
    
    return $output;

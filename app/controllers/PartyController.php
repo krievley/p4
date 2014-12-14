@@ -19,12 +19,29 @@ class PartyController extends BaseController {
 
         //This function displays the party page.
         public function getWebsite($website) {
-            $party = Party::where('website', '=', $website)->get();
-            $user = User::where('id', '=', $party->first()->user_id)->get();
-            //print_r($party);
+            $party = Party::with('guests')
+                        ->where('website', '=', $website)
+                        ->get();
+            $guests = $party->first()->guests;
+            //var_dump($guests->count());
             
             return View::make('party')
-                    ->with('user', $user)
-                    ->with('party', $party);
+                    ->with('party', $party)
+                    ->with('guests', $guests);
+        }
+        
+        //Processes the RSVP form.
+        public function postResponse() {
+            //Create a new guest.
+            $guest = new Guest;
+            $guest->email = Input::get('email');
+            $guest->name = Input::get('name');
+            //Save guest to database.
+            $guest->save();
+            //Add guest id and party id to pivot table.
+            $guest->parties()->attach(Input::get('id'));
+            
+            return Redirect::back()
+                    ->with('message', 'Thank you for your RSVP.');
         }
 }

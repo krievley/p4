@@ -1,0 +1,96 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 12, 2014, 10:02:55 PM
+    Author     : krievley
+*/
+ @font-face {
+     font-family:"Harrington";
+     src:url("../Harrington/HARNGTON.eot?") format("eot"),url("../Harrington/HARNGTON.woff") format("woff"),url("../Harrington/HARNGTON.ttf") format("truetype"),url("../Harrington/HARNGTON.svg#Harrington") format("svg");
+     font-weight:normal;
+     font-style:normal;
+ }
+
+html { 
+    background: url(../images/background.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+body {
+    font-family: 'High Tower Text';
+    font-size: 18px;
+}
+hr {
+    color: #16352f;
+}
+input {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-style: solid;
+    border-color: #faeada;
+    border-radius: 5px;
+}
+.h1 {
+    font-family: 'Harrington';
+    font-size: 4em;
+    width: 100%;
+    text-align: left;
+    color: #16352f;
+}
+h2 {
+    font-family: 'Berlin Sans FB';
+    font-size: 28px;
+    font-weight: lighter;
+    color: #16352f;
+}
+input[type='submit'] {
+    border-style: none;
+    border-radius: 5px;
+    background-color: #fe800b;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    color: #faeada;
+    font-weight: bold;
+}
+#header {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.container {
+    width: 960px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.content {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    padding: 10px;
+}
+.col3 {
+    width: 33%;
+    display: inline-block;
+    vertical-align: top;
+}
+.col5 {
+    width: 66%;
+    display: inline-block;
+    vertical-align: top;
+}
+.login {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #16352f;
+    text-align: right;
+}
+.submit {
+    width: 100%;
+    text-align: center;
+    margin-top: 25px;
+}

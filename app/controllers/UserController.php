@@ -41,15 +41,8 @@ class UserController extends BaseController {
         public function postRegister() {
             //Validate user input against model rules.
             $validator = Validator::make(Input::all(), User::$rules);
-            //If not validated, redirect to login with errors.
-            if ($validator->fails()) {
-                return Redirect::to('/')
-                        ->with('flash_message', 'Sign up failed; please try again.')
-                        ->withInput()
-                        ->withErrors($validator);
-            }
             //If validated, add new user to the database.
-            else {
+            if ($validator->passes()) {
                 $user = new User;
                 $user->email    = Input::get('email');
                 $user->password = Hash::make(Input::get('password'));
@@ -60,14 +53,21 @@ class UserController extends BaseController {
                 }
                 # Fail
                 catch (Exception $e) {
-                    return Redirect::to('/signup')->with('flash_message', 'Sign up failed; please try again.')->withInput();
+                    return Redirect::to('/')->with('flash_message', 'Sign up failed; please try again.')->withInput();
                 }
 
                 # Log the user in
                 Auth::login($user);
                 
                 //Set up a new user dashboard.
-                return Redirect::to('/members/dashboard')->with('flash_message', 'You have successfully logged in!');
+                return Redirect::to('/members/dashboard')->with('flash_message', 'You have successfully registered!');
+            }
+            //If not validated, redirect to login with errors.
+            else {
+                return Redirect::to('/')
+                        ->with('flash_message', 'Sign up failed; please try again.')
+                        ->withInput()
+                        ->withErrors($validator);
             }
         }
         
