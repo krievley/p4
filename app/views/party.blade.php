@@ -12,33 +12,53 @@
     </head>
     <body>
         <div class='cover'>
-            <div id='nav'>
-                <a href='#' class='rsvp'>RSVP</a>
-                <a href='#'>Bringing Something to the Party?</a>
+            <div class='content'>
+                <h1>Party: {{ $party->first()->name }}</h1>
+                <div id='nav'>
+                    <a href='#' class='rsvp'>RSVP</a>
+                </div>
+                <div class='col2'>
+                    <div id='dateTime'>
+                        Date: {{ date('F d, Y', strtotime($party->first()->date)) }}<br>
+                        Start Time: {{ $party->first()->start_time }}<br>
+                        End Time: {{ $party->first()->end_time }}<br>
+                        Location: {{ $party->first()->location }}<br>
+                    </div>
+                </div>
+                <div class='col2'>
+                    <div id='misc'>
+                        Host: {{ $party->first()->host }}<br>
+                        Theme: {{ $party->first()->theme }}<br>
+                        Attire: {{ $party->first()->attire }}<br>
+                        Is Alcohol Provided?: {{ $party->first()->alcohol }}<br>
+                        Items Provided by Host: {{ $party->first()->provided_items }}<br>
+                    </div>
+                </div>
             </div>
-            <div>
-                Party: {{ $party->first()->name }}<br>
-                Date: {{ date('F d, Y', strtotime($party->first()->date)) }}<br>
-                Start Time: {{ $party->first()->start_time }}<br>
-                End Time: {{ $party->first()->end_time }}<br><br><br>
-                Host: {{ $party->first()->host }}<br>
-                Theme: {{ $party->first()->theme }}<br>
-                Location: {{ $party->first()->location }}<br>
-                Attire: {{ $party->first()->attire }}<br>
-                Is Alcohol Provided?: {{ $party->first()->alcohol }}<br><br>
-            </div>
-            <div>
-                Items Provided by Host: {{ $party->first()->provided_items }}
-            </div>
-            <div>
-                List of attendees:
-                @if($guests->first() != NULL)
-                    @foreach($guests as $guest)
-                        {{ ucwords($guest->name) }}
-                    @endforeach
-                @else
-                    {{ 'None' }}
-                @endif    
+            <div class='content'>
+                <div class='col6'>
+                    <h1>Guest List</h1>
+                    <div class='list'>
+                        @if($guests->first() != NULL)
+                            <table>
+                                <thead>
+                                    <th>Name</th>
+                                    <th>Attending</th>
+                                    <th>Items Providing</th>
+                                </thead>
+                                @foreach($guests as $guest)
+                                    <tr>
+                                        <td>{{ ucwords($guest->name) }}</td>
+                                        <td>{{ $guest->attending }}</td>
+                                        <td>{{ $guest->items }}</td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        @else
+                            {{ 'None' }}
+                        @endif 
+                    </div>   
+                </div>
             </div>
         </div>
         <div class='rsvp_form pop'>
@@ -47,7 +67,6 @@
                 <h3>Submit Your RSVP</h3>
                 {{-- RSVP Form ------------------}}
                     {{ Form::open(array('url' => '/party/response', 'method' => 'POST')) }}
-                    {{ Form::token() }}
                     {{ Form::hidden('id', $party->first()->id) }}
 
                     {{-- Name Field -----------------}}
@@ -61,6 +80,10 @@
                     {{-- Attend Field --------------}}
                     {{ Form::label('attend', 'Will you be attending?') }}
                     {{ Form::select('attend', array('yes' => 'yes', 'no' => 'no')) }}<br><br>
+                    
+                    {{-- Item Field ----------------}}
+                    {{ Form::label('items', 'Items You are Bringing ') }}<small>List items on separate lines.</small><br>
+                    {{ Form::textarea('items') }}<br><br>
             </div>
             <div class='col6'>
                 {{-- Submit Button -------------}}

@@ -36,6 +36,8 @@ class PartyController extends BaseController {
             $guest = new Guest;
             $guest->email = Input::get('email');
             $guest->name = Input::get('name');
+            $guest->attending = Input::get('attend');
+            $guest->items = Input::get('items');
             //Save guest to database.
             $guest->save();
             //Add guest id and party id to pivot table.
@@ -43,5 +45,10 @@ class PartyController extends BaseController {
             
             return Redirect::back()
                     ->with('message', 'Thank you for your RSVP.');
+        }
+        
+        //Processes the item form.
+        public function postItem() {
+            
         }
 }

@@ -7,6 +7,8 @@
 $(document).ready(function() {
    //Hide rsvp form initially.
     $('.rsvp_form').hide();
+    //Hide item form initially.
+    $('.item_form').hide();
 
     //When rsvp link is clicked, 
     $('.rsvp').on('click', function() {
@@ -15,6 +17,7 @@ $(document).ready(function() {
         //display rsvp form
         $('.rsvp_form').show();
     });
+    
 
     //When close link is clicked
     $('#close').on('click', function() {
