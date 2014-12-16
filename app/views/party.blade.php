@@ -71,11 +71,11 @@
 
                     {{-- Name Field -----------------}}
                     {{ Form::label('name', 'Name') }}
-                    {{ Form::text('name') }}<br>
+                    {{ Form::text('name', null, array('required' => 'required')) }}<br>
 
                     {{-- Email Field ----------------}}
                     {{ Form::label('email', 'Email') }}
-                    {{ Form::email('email') }}<br><br>
+                    {{ Form::email('email', null, array('required' => 'required')) }}<br><br>
 
                     {{-- Attend Field --------------}}
                     {{ Form::label('attend', 'Will you be attending?') }}

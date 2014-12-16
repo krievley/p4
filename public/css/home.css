@@ -73,6 +73,12 @@ input[type='submit'] {
     border-radius: 5px;
     padding: 10px;
 }
+.error {
+    font-family: Arial;
+    font-size: 12px;
+    color: red;
+    font-style: italic;
+}
 .col3 {
     width: 33%;
     display: inline-block;
@@ -93,4 +99,15 @@ input[type='submit'] {
     width: 100%;
     text-align: center;
     margin-top: 25px;
+}
+.flash-message {
+    background-color: red;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px;
+    opacity: 0.8;
+    margin-bottom: 50px;    
 }

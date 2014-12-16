@@ -40,7 +40,7 @@ class UserController extends BaseController {
         //This function handles the registration form.
         public function postRegister() {
             //Validate user input against model rules.
-            $validator = Validator::make(Input::all(), User::$rules);
+            $validator = Validator::make(Input::all(), User::$rules, User::$messages);
             //If validated, add new user to the database.
             if ($validator->passes()) {
                 $user = new User;
@@ -53,7 +53,7 @@ class UserController extends BaseController {
                 }
                 # Fail
                 catch (Exception $e) {
-                    return Redirect::to('/')->with('flash_message', 'Sign up failed; please try again.')->withInput();
+                    return Redirect::to('/')->with('flash_message', 'Sign up failed; please try again.')->withInput()->withErrors($validator);
                 }
 
                 # Log the user in

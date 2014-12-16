@@ -36,38 +36,47 @@ class MembersController extends BaseController {
         
         //Function to process the add party form.
         public function postAdd() {
-            //Convert date from input.
-            $date = new DateTime();
-            $date->setDate(Input::get('year'), Input::get('month'), Input::get('day'));
+            //Validate input.
+            $validator = Validator::make(Input::all(), Party::$rules, Party::$messages);
             
-            //Add party to the database.
-            $party = new Party;
-            $party->user_id = Auth::id();
-            $party->host = Input::get('host');
-            $party->name = Input::get('name');
-            $party->date = $date;
-            $party->start_time = Input::get('start_hour') . ':' . Input::get('start_minute') . ' ' . Input::get('start_ampm');
-            $party->end_time = Input::get('end_hour') . ':' . Input::get('end_minute') . ' ' . Input::get('end_ampm');
-            $party->theme = Input::get('theme');
-            $party->provided_items = Input::get('items');
-            $party->location = Input::get('location');
-            $party->attire = Input::get('attire');
-            $party->alcohol = Input::get('alcohol');
-            
-            do {
-                //Assign random string to website.
-                $website = str_random(20);
-                $validator = Validator::make(array ('website' => $website),
-                                                array ('website' => array('unique:parties,website')));
-                //Keep looping until website is unique.
-            } while ($validator->fails());
-            
-            //Save new party to database.
-            $party->website = $website;
-            $party->save();
-            
-            return Redirect::to('members/dashboard')
-                    ->with('flash_message', 'Your party has been added.');
+            //If validator passes
+            if($validator->passes()) {
+                //Convert date from input.
+                $date = new DateTime();
+                $date->setDate(Input::get('year'), Input::get('month'), Input::get('day'));
+
+                //Add party to the database.
+                $party = new Party;
+                $party->user_id = Auth::id();
+                $party->host = Input::get('host');
+                $party->name = Input::get('name');
+                $party->date = $date;
+                $party->start_time = Input::get('start_hour') . ':' . Input::get('start_minute') . ' ' . Input::get('start_ampm');
+                $party->end_time = Input::get('end_hour') . ':' . Input::get('end_minute') . ' ' . Input::get('end_ampm');
+                $party->theme = Input::get('theme');
+                $party->provided_items = Input::get('items');
+                $party->location = Input::get('location');
+                $party->attire = Input::get('attire');
+                $party->alcohol = Input::get('alcohol');
+
+                do {
+                    //Assign random string to website.
+                    $website = str_random(20);
+                    $validator = Validator::make(array ('website' => $website),
+                                                    array ('website' => array('unique:parties,website')));
+                    //Keep looping until website is unique.
+                } while ($validator->fails());
+
+                //Save new party to database.
+                $party->website = $website;
+                $party->save();
+
+                return Redirect::to('members/dashboard')
+                        ->with('flash_message', 'Your party has been added.');
+            }
+            else {
+                return Redirect::to('/members/add')->withInput()->withErrors($validator);
+            }
         }
         
         //Displays the form to edit a party.
@@ -79,23 +88,32 @@ class MembersController extends BaseController {
         
         //Processes the edit form.
         public function postEdit() {
-            //Transform user input to date.
-            $date = new DateTime();
-            $date->setDate(Input::get('year'), Input::get('month'), Input::get('day'));
-            //Update database
-            Party::where('id', '=', Input::get('id'))
-                    ->update(array('host' => Input::get('host'),
-                                    'name' => Input::get('name'),
-                                    'date' => $date,
-                                    'start_time' => Input::get('start_hour') . ':' . Input::get('start_minute') . ' ' . Input::get('start_ampm'),
-                                    'end_time' => Input::get('end_hour') . ':' . Input::get('end_minute') . ' ' . Input::get('end_ampm'),
-                                    'theme' => Input::get('theme'),
-                                    'provided_items' => Input::get('provided_items'),
-                                    'location' => Input::get('location'),
-                                    'attire' => Input::get('attire'),
-                                    'alcohol' => Input::get('alcohol')));
+            //Validate input.
+            $validator = Validator::make(Input::all(), Party::$rules, Party::$messages);
             
-            return Redirect::back()->with('message', 'Your Changes Have Been Saved');
+            //If validator passes
+            if($validator->passes()) {
+                //Transform user input to date.
+                $date = new DateTime();
+                $date->setDate(Input::get('year'), Input::get('month'), Input::get('day'));
+                //Update database
+                Party::where('id', '=', Input::get('id'))
+                        ->update(array('host' => Input::get('host'),
+                                        'name' => Input::get('name'),
+                                        'date' => $date,
+                                        'start_time' => Input::get('start_hour') . ':' . Input::get('start_minute') . ' ' . Input::get('start_ampm'),
+                                        'end_time' => Input::get('end_hour') . ':' . Input::get('end_minute') . ' ' . Input::get('end_ampm'),
+                                        'theme' => Input::get('theme'),
+                                        'provided_items' => Input::get('provided_items'),
+                                        'location' => Input::get('location'),
+                                        'attire' => Input::get('attire'),
+                                        'alcohol' => Input::get('alcohol')));
+
+                return Redirect::to('/members/dashboard')->with('message', 'Your Changes Have Been Saved');
+            }
+            else {
+                return Redirect::back()->withInput()->withErrors($validator);
+            }
         }
         
         //Function to delete a party.
@@ -117,18 +135,26 @@ class MembersController extends BaseController {
         
         //Function to process the invite request.
         public function postInvite() {
-            $input = array('input' => Input::all());
+            //Validate user input against model rules.
+            $validator = Validator::make(Input::all(), Party::$invite_rules, Party::$invite_messages);
+            //If validated, add new user to the database.
+            if ($validator->passes()) {
+                $input = array('input' => Input::all());
             
-            //Send mail using user input.
-            Mail::send('emails.invite', $input, function($message)
-            {
-                $message->from(Input::get('from'));
-                $message->to(Input::get('to')); 
-            });
-            
-            //Redirect back to user dashboard.
-            return Redirect::to('members/dashboard')
-                ->with('message', 'Your invitations have been sent.');
+                //Send mail using user input.
+                Mail::send('emails.invite', $input, function($message)
+                {
+                    $message->from(Input::get('from'));
+                    $message->to(Input::get('to')); 
+                });
+
+                //Redirect back to user dashboard.
+                return Redirect::to('members/dashboard')
+                    ->with('message', 'Your invitations have been sent.');
+            }
+            else {
+                return Redirect::back()->withInput()->withErrors($validator);
+            }
         }
 }
 

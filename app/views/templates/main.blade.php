@@ -17,12 +17,12 @@
                 <div id='nav'>
                     @yield('navigation')
                 </div>
+            </div>
         </div>
-        </div>
+        <div class='border'></div>
         @if(Session::get('flash_message'))
             <div class='flash-message'>{{ Session::get('flash_message') }}</div>
         @endif
-        <div class='border'></div>
         @yield('content')   
     </body>
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>

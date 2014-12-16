@@ -52,6 +52,7 @@
                                 </td>
                                 <td>
                                     {{ Form::email('email') }}<br>
+                                    <span class='error'>{{  $errors->first('email') }}</span>
                                 </td>
                             </tr>
                             <tr>{{-- Password field. ------------------------}}
@@ -60,6 +61,7 @@
                                 </td>
                                 <td>
                                     {{ Form::password('password') }}<br>
+                                    <span class='error'>{{  $errors->first('password') }}</span> 
                                 </td>
                             </tr>
                         </table>

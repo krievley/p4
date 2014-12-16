@@ -19,13 +19,15 @@ table {
     margin:0px;
     padding:0px;
 }
+th {
+    font-size: 22px;
+    text-align:left;
+}
 td {
     vertical-align:middle;
-    border:1px solid #000000;
-    border-width:0px 1px 1px 0px;
     text-align:left;
     padding:7px;
-    font-size:10px;
+    font-size:18px;
     font-family:Arial;
     font-weight:normal;
     color:#000000;
@@ -33,6 +35,9 @@ td {
 
 a {
     text-decoration: none;
+}
+label {
+    font-weight: bold;
 }
 #header{
     /* IE10 Consumer Preview */ 
@@ -89,6 +94,62 @@ a {
 .parties {
     
 }
+#footer {
+    height: 300px;
+}
+.error {
+    font-family: Arial;
+    font-size: 12px;
+    color: red;
+    font-style: italic;
+}
+.flash-message {
+    * IE10 Consumer Preview */ 
+    background-image: -ms-linear-gradient(top left, #4E6A96 0%, #394F74 100%);
+    /* Mozilla Firefox */ 
+    background-image: -moz-linear-gradient(top left, #4E6A96 0%, #394F74 100%);
+    /* Opera */ 
+    background-image: -o-linear-gradient(top left, #4E6A96 0%, #394F74 100%);
+    /* Webkit (Safari/Chrome 10) */ 
+    background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #4E6A96), color-stop(1, #394F74));
+    /* Webkit (Chrome 11+) */ 
+    background-image: -webkit-linear-gradient(top left, #4E6A96 0%, #394F74 100%);
+    /* W3C Markup, IE10 Release Preview */ 
+    background-image: linear-gradient(to bottom right, #4E6A96 0%, #394F74 100%);
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px;
+    opacity: 0.8;
+    margin-bottom: 50px;    
+}
+.submit_button {
+    /* IE10 Consumer Preview */ 
+    background-image: -ms-linear-gradient(top left, #4E6A96 0%, #394F74 100%);
+    /* Mozilla Firefox */ 
+    background-image: -moz-linear-gradient(top left, #4E6A96 0%, #394F74 100%);
+    /* Opera */ 
+    background-image: -o-linear-gradient(top left, #4E6A96 0%, #394F74 100%);
+    /* Webkit (Safari/Chrome 10) */ 
+    background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #4E6A96), color-stop(1, #394F74));
+    /* Webkit (Chrome 11+) */ 
+    background-image: -webkit-linear-gradient(top left, #4E6A96 0%, #394F74 100%);
+    /* W3C Markup, IE10 Release Preview */ 
+    background-image: linear-gradient(to bottom right, #4E6A96 0%, #394F74 100%);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-top: 35px;
+    color: white;
+    border-radius: 40px;
+    font-weight: bold;
+}
+.web {
+    width: 400px;
+}
 .col1 {
     width: 100%;
 }
@@ -96,7 +157,16 @@ a {
     width: 33%;
     display: inline-block;
 }
+.col4 {
+    width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
 .col5 {
     width: 66%;
     display: inline-block;
+}
+.col6 {
+    width: 100%;
+    text-align: center;
 }

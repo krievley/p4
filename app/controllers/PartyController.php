@@ -32,19 +32,28 @@ class PartyController extends BaseController {
         
         //Processes the RSVP form.
         public function postResponse() {
-            //Create a new guest.
-            $guest = new Guest;
-            $guest->email = Input::get('email');
-            $guest->name = Input::get('name');
-            $guest->attending = Input::get('attend');
-            $guest->items = Input::get('items');
-            //Save guest to database.
-            $guest->save();
-            //Add guest id and party id to pivot table.
-            $guest->parties()->attach(Input::get('id'));
-            
-            return Redirect::back()
-                    ->with('message', 'Thank you for your RSVP.');
+            //Validate user input against model rules.
+            $validator = Validator::make(Input::all(), User::$rules, User::$messages);
+            //If validated, add new user to the database.
+            if ($validator->passes()) {
+                //Create a new guest.
+                $guest = new Guest;
+                $guest->email = Input::get('email');
+                $guest->name = Input::get('name');
+                $guest->attending = Input::get('attend');
+                $guest->items = Input::get('items');
+                //Save guest to database.
+                $guest->save();
+                //Add guest id and party id to pivot table.
+                $guest->parties()->attach(Input::get('id'));
+
+                return Redirect::back()
+                        ->with('message', 'Thank you for your RSVP.');
+            }
+            else {
+                return Redirect::back()
+                        ->withInput()->withErrors($validator);
+            }
         }
         
         //Processes the item form.

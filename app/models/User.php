@@ -32,6 +32,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
                                 'password' => 'required|min:6');
         
         /**
+	 * The unique error message returned with validator.
+	 *
+	 * @var array
+	 */
+        public static $messages = array('email' => array('required' => 'The email field is required.',
+                                                         'email.email' => 'The email must be valid.',
+                                                         'email.unique' => 'The email you entered has already been used.'),
+                                        'password' => 'The password must be a minimum of six characters.');
+        /**
         * The following functions represent the relationships
         * of the User model to other models
         *

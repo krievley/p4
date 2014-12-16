@@ -49,6 +49,12 @@ td {
     margin-right: auto;
     margin-left: auto;
 }
+.error {
+    font-family: Arial;
+    font-size: 12px;
+    color: red;
+    font-style: italic;
+}
 .list {
     padding-bottom: 50px;
 }
@@ -72,6 +78,17 @@ td {
     bottom:0;
     left:0;
     right:0;
+}
+.flash-message {
+    background-color: red;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px;
+    opacity: 0.8;
+    margin-bottom: 50px;    
 }
 .col1 {
     width: 99%;
