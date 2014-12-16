@@ -17,6 +17,9 @@ Add a Party
 @stop
 @section('content')
 <div>
+    <p>
+        Use the form below to add a new party page.
+    </p>
     <div class='col6'>
         <div class='col4'>
             {{ Form::open(array('url' => 'members/add', 'method' => 'POST')) }}

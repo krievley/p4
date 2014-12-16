@@ -21,6 +21,12 @@ Member Dashboard
         <div class='col1'>
             @if(!empty($parties))
             <div class='parties'>
+                <p>
+                    Welcome to your dashboard. Here you can add a new party,
+                    invite people to your party page,
+                    edit/manage your existing parties, and delete the parties
+                    that have already expired.
+                </p>
                 <table>
                     <tr>
                         <th>Party Websites</th>

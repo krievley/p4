@@ -17,6 +17,9 @@ Edit Party
 @stop
 @section('content')
     <div class='container'>
+        <p>
+            Use the form below to add a edit the party.
+        </p>
         <div class='col6'>
             <div class='col4'>
                 {{-- Edit Party Form ---------------------------------}}

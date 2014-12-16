@@ -75,20 +75,13 @@
                 <div class ='col5'>
                     <div class='content'>
                         <p>
-                            Cubilia per dictumst porta sagittis molestie vulputate conubia, sapien tellus magna sollicitudin faucibus id vivamus, 
-                            ut nisi purus turpis consectetur phasellus. Sagittis porta taciti dictum semper ullamcorper aenean interdum tristique 
-                            consequat purus, congue conubia ad blandit aenean consectetur turpis mi felis, et at leo dapibus curabitur risus ligula 
-                            ut porttitor. Lorem dui platea pharetra a porta viverra pulvinar tristique, porttitor mauris ut fames enim quisque 
-                            hendrerit ultricies tellus, etiam integer aenean vitae tristique potenti inceptos. Proin posuere nostra tellus maecenas 
-                            at non cras eros ultrices aenean torquent, pretium duis ante quis aptent nec eleifend venenatis arcu diam, gravida 
-                            venenatis aenean molestie hac sed hac tincidunt dui egestas. Laoreet posuere justo fermentum iaculis vitae molestie 
-                            egestas, cubilia congue interdum vestibulum facilisis lacus, sociosqu velit habitasse sapien justo litora. Nam molestie 
-                            consectetur pellentesque sollicitudin dolor mattis potenti ultricies quisque, nunc fames amet dictum suscipit porttitor 
-                            accumsan commodo neque, egestas augue mattis laoreet bibendum nisl interdum libero. Ad primis porttitor quisque 
-                            venenatis risus duis vehicula viverra, scelerisque gravida congue dolor pellentesque malesuada maecenas interdum 
-                            eleifend, turpis vulputate aliquet felis vitae lectus facilisis. Interdum cursus tellus eleifend faucibus eu pretium 
-                            ac varius tempus, morbi tempus aliquam mauris vivamus aenean etiam dapibus fames, semper praesent diam mattis interdum 
-                            justo netus arcu.
+                            This website is designed to help people plan parties together.
+                            A registered user can create a party website and any
+                            guests who rsvp can list the items they are bringing
+                            to the party. 
+                            <br><br>
+                            Sign up for free and start planning your parties
+                            the right way.
                         </p>
                     </div>
                 </div>

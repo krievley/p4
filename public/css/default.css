@@ -39,6 +39,10 @@ a {
 label {
     font-weight: bold;
 }
+p {
+    font-size: 24px;
+    padding-bottom: : 15px;
+}
 #header{
     /* IE10 Consumer Preview */ 
     background-image: -ms-linear-gradient(bottom, #FBD161 0%, #F8C640 100%);

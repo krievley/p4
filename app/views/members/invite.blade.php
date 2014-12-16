@@ -10,6 +10,10 @@ Invite Guests
 
 <!-- Add Content for Page-->
 @section('navigation')
+<p>
+    Use the form below to send invites to your party page.
+    Or, just copy the web site link and send it to your friends.
+</p>
 <div class='col3'></div>
 <div class='col5'>
     <a href='/members/dashboard' class='nav_link' >Cancel Changes</a>
