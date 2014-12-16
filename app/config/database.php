@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'database',
+			'database'  => 'potluck',
 			'username'  => 'root',
 			'password'  => 'qmJj1j5sJW',
 			'charset'   => 'utf8',
