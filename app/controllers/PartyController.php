@@ -33,7 +33,7 @@ class PartyController extends BaseController {
         //Processes the RSVP form.
         public function postResponse() {
             //Validate user input against model rules.
-            $validator = Validator::make(Input::all(), User::$rules, User::$messages);
+            $validator = Validator::make(Input::all(), Guest::$rules, Guest::$messages);
             //If validated, add new user to the database.
             if ($validator->passes()) {
                 //Create a new guest.
