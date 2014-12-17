@@ -7,8 +7,7 @@ http://p4.kristin-rievley.me/
 This website allows registered users to plan parties online.
 
 ## Demo
-I'll be attending my Monday section with Jenni to
-do an in-person demo.
+http://screencast.com/t/CbB29H7PgAA
 
 ## Outside Code
 normalize.css: http://necolas.github.io/normalize.css/
