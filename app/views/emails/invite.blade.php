@@ -13,7 +13,7 @@
         </p>
         <p>
             My party page link:
-            <a href='{{'www.p4.kristin-rievley.me/' . $input['website'] }}'>My Party Page</a>
+            <a href='{{'www.p4.kristin-rievley.me' . $input['website'] }}'>My Party Page</a>
         </p>
     </body>
 </html>
