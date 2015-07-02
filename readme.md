@@ -1,8 +1,5 @@
 # P4 Project
 
-## Live URL
-http://p4.kristin-rievley.me/
-
 ## Description
 This website allows registered users to plan parties online.
 
